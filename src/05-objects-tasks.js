@@ -50,9 +50,11 @@ function getJSON(obj) {
  *    const r = fromJSON(Circle.prototype, '{"radius":10}');
  *
  */
-function fromJSON(/* proto, json */) {
-  // const prop = JSON.parse(json);
-  throw new Error('Not implemented');
+function fromJSON(proto, json) {
+  const prop = JSON.parse(json);
+  const result = Object.create(proto);
+  Object.assign(result, prop);
+  return result;
 }
 
 /**
@@ -113,7 +115,6 @@ const cssSelectorBuilder = {
   selector: [],
   stringify() {
     const result = this.selector.join('');
-    console.log(result);
     this.selector.length = 0;
     return result;
   },
@@ -147,9 +148,16 @@ const cssSelectorBuilder = {
     return this;
   },
 
-  combine(selector1, combinator, selector2) {
-    this.selector += `${selector1} ${combinator} ${selector2}`;
-    return this;
+  combine(/* selector1, combinator, selector2 */) {
+    // const result = {};
+    // Object.assign(result, selector2);
+    // console.log('>---<');
+    // console.log(result.stringify());
+    // console.log(combinator);
+    // console.log(selector2);
+    // // this.selector += `${selector1} ${combinator} ${selector2}`;
+    // return this;
+    throw new Error('Not implemented');
   },
 };
 
